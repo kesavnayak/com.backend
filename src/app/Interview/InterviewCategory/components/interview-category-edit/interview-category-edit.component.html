@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <form
+      (ngSubmit)="submit(formInterviewData)"
+      [formGroup]="formInterviewData"
+      novalidate
+    >
+      <div class="form-row">
+        <div class="col-md-6 form-group">
+          <label> IsCollapse: </label>
+
+          <input
+            class="form-control form-control-lg"
+            type="text"
+            formControlName="IsCollapse"
+            class="form-control"
+          />
+        </div>
+        <div class="col-md-6 form-group">
+          <label> QuestionNo: </label>
+
+          <input
+            type="text"
+            formControlName="QuestionNo"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 form-group">
+          <label> QuestionText: </label>
+
+          <input
+            type="text"
+            formControlName="QuestionText"
+            class="form-control"
+          />
+        </div>
+        <div class="col-md-6 form-group">
+          <label> QuestionRef: </label>
+
+          <input
+            type="text"
+            formControlName="QuestionRef"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12 form-group">
+          <label> QuestionDesc: </label>
+
+          <textarea
+            rows="30"
+            cols="50"
+            formControlName="QuestionDesc"
+            class="form-control"
+          ></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <input
+            type="submit"
+            class="btn btn-primary"
+            value="Submit"
+            [disabled]="!formInterviewData.valid || iid"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <input
+            type="button"
+            class="btn btn-primary"
+            (click)="update(formInterviewData)"
+            value="Update"
+            [disabled]="!formInterviewData.valid || !iid"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

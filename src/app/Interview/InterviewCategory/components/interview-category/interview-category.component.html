@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <h3>InterviewQuestions</h3>
+
+      <hr class="my-4" />
+      <button
+        routerLink="/CreateInterview/{{ id }}"
+        routerLinkActive="active"
+        class="btn btn-primary"
+      >
+        Add
+      </button>
+    </div>
+
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>IsCollapse</th>
+          <th>QuestionCategoryId</th>
+          <th>QuestionDesc</th>
+          <th>QuestionNo</th>
+          <th>QuestionRef</th>
+          <th>QuestionText</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let interviewCategory of interviewCategories">
+          <td>{{ interviewCategory.IsCollapse }}</td>
+          <td>{{ interviewCategory.QuestionCategoryId }}</td>
+          <td>{{ interviewCategory.QuestionDesc }}</td>
+          <td>{{ interviewCategory.QuestionNo }}</td>
+          <td>{{ interviewCategory.QuestionRef }}</td>
+          <td>{{ interviewCategory.QuestionText }}</td>
+          <td>
+            <button (click)="update(interviewCategory.id)">Edit</button>
+          </td>
+          <td>
+            <button (click)="delete(interviewCategory.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

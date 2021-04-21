@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <h3>QuestionCategory</h3>
+
+      <hr class="my-4" />
+      <button
+        routerLink="/Create"
+        routerLinkActive="active"
+        class="btn btn-primary"
+      >
+        Add
+      </button>
+    </div>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Desc</th>
+          <th>Logo</th>
+          <th>Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let questionCategory of questionCategories">
+          <td>{{ questionCategory.QuestionCategoryName }}</td>
+          <td>{{ questionCategory.QuestionCategoryDesc }}</td>
+          <td>{{ questionCategory.QuestionCategoryLogo }}</td>
+          <td>{{ questionCategory.QuestionCategoryColor }}</td>
+          <td>
+            <button (click)="update(questionCategory.id)">Edit</button>
+          </td>
+          <td>
+            <button (click)="delete(questionCategory.id)">Delete</button>
+          </td>
+          <td>
+            <button (click)="details(questionCategory.id)">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
