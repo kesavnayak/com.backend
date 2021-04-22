@@ -42,6 +42,10 @@ export class InterviewCategoryComponent implements OnInit {
                   ...(e.payload.doc.data() as {}),
                 } as InterviewCategory;
               });
+
+              this.interviewCategories = this.interviewCategories.sort(
+                (item1, item2) => (item1.QuestionNo < item2.QuestionNo ? 1 : -1)
+              );
             });
         });
     }
