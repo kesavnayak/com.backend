@@ -42,6 +42,7 @@ export class QuestionCategoryEditComponent implements OnInit {
       QuestionCategoryDesc: new FormControl('', Validators.required),
       QuestionCategoryName: new FormControl('', Validators.required),
       QuestionCategoryLogo: new FormControl('', Validators.required),
+      Table: new FormControl('', Validators.required),
     });
   }
 
@@ -54,6 +55,7 @@ export class QuestionCategoryEditComponent implements OnInit {
       questionCategory.value.QuestionCategoryLogo;
     this.questionCategory.QuestionCategoryDesc =
       questionCategory.value.QuestionCategoryDesc;
+    this.questionCategory.Table = questionCategory.value.Table;
 
     if (this.formData.valid) {
       this.questionCategoryService.updateQuestionCategory(
