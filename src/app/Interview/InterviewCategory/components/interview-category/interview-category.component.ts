@@ -44,7 +44,8 @@ export class InterviewCategoryComponent implements OnInit {
               });
 
               this.interviewCategories = this.interviewCategories.sort(
-                (item1, item2) => (item1.QuestionNo < item2.QuestionNo ? 1 : -1)
+                (item1, item2) =>
+                  Number(item1.QuestionNo) < Number(item2.QuestionNo) ? 1 : -1
               );
             });
         });
