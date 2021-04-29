@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <h3>Articles</h3>
+
+      <hr class="my-4" />
+      <button
+        routerLink="/ArticlesCreate/{{ id }}"
+        routerLinkActive="active"
+        class="btn btn-primary"
+      >
+        Add
+      </button>
+    </div>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>SubTitle</th>
+          <th>Image</th>
+          <th>Features</th>
+          <th>References</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of articles">
+          <td>{{ article.Title }}</td>
+          <td>{{ article.Subtitle }}</td>
+          <td>{{ article.Image }}</td>
+          <td>
+            <select>
+              <option value="volvo" *ngFor="let ref of article.Reference">
+                {{ ref }}
+              </option>
+            </select>
+          </td>
+          <td>
+            <select>
+              <option value="volvo" *ngFor="let ft of article.Feature">
+                {{ ft }}
+              </option>
+            </select>
+          </td>
+          <td>
+            <button (click)="update(article.id)">Edit</button>
+          </td>
+          <td>
+            <button (click)="delete(article.id)">Delete</button>
+          </td>
+          <td>
+            <button (click)="details(article.id)">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

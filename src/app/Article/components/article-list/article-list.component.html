@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="jumbotron">
+      <h3>ArticleList</h3>
+
+      <hr class="my-4" />
+      <button
+        routerLink="/ArticleListCreate"
+        routerLinkActive="active"
+        class="btn btn-primary"
+      >
+        Add
+      </button>
+    </div>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Desc</th>
+          <th>Logo</th>
+          <th>Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let articleList of articleLists">
+          <td>{{ articleList.ArticleListName }}</td>
+          <td>{{ articleList.ArticleListDesc }}</td>
+          <td>{{ articleList.ArticleListLogo }}</td>
+          <td>
+            {{ articleList.ArticleListColor }}
+          </td>
+          <td>
+            <button (click)="update(articleList.id)">Edit</button>
+          </td>
+          <td>
+            <button (click)="delete(articleList.id)">Delete</button>
+          </td>
+          <td>
+            <button (click)="details(articleList.id)">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

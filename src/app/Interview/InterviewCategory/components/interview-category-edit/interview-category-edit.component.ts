@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuestionCategory } from 'src/app/QuestionCategory/models/question-category.model';
-import { QuestionCategoryService } from 'src/app/QuestionCategory/services/question-category.service';
+import { QuestionCategory } from 'src/app/Interview/QuestionCategory/models/question-category.model';
+import { QuestionCategoryService } from 'src/app/Interview/QuestionCategory/services/question-category.service';
 import { InterviewCategory } from '../../models/interview-category.model';
 import { InterviewCategoryService } from '../../services/interview-category.service';
 
