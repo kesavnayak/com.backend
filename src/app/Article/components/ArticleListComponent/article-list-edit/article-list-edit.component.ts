@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArticleList } from '../../models/article.model';
-import { ArticleService } from '../../services/article.service';
+import { ArticleList } from 'src/app/Article/models/article.model';
+import { ArticleService } from 'src/app/Article/services/article.service';
 
 @Component({
   selector: 'app-article-list-edit',
@@ -22,10 +22,10 @@ export class ArticleListEditComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     if (!!this.id) {
       this.articleService.getArticleListById(this.id).subscribe((data) => {
-        this.articleList = {
-          id: data.payload.id,
-          ...(data.payload.data() as {}),
-        } as ArticleList;
+        const id = data.payload.id;
+        const d = data.payload.data() as ArticleList;
+
+        this.articleList = { id, ...d } as ArticleList;
 
         if (this.articleList) {
           this.formData.patchValue(this.articleList);

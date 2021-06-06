@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Article } from '../../models/article.model';
-import { ArticleService } from '../../services/article.service';
+import { Article } from 'src/app/Article/models/article.model';
+import { ArticleService } from 'src/app/Article/services/article.service';
 
 @Component({
   selector: 'app-article-edit',
@@ -22,11 +22,15 @@ export class ArticleEditComponent implements OnInit {
   ) {
     this.id = this.route.snapshot.params['id'];
     if (!!this.id) {
+      //this.articleService.getArticle().subscribe((x) => {
+      //x.map((e) => {
+      debugger;
+      //if ((e.payload.doc.data() as Article).Id == this.id) {
       this.articleService.getArticleById(this.id).subscribe((data) => {
-        this.article = {
-          id: data.payload.id,
-          ...(data.payload.data() as {}),
-        } as Article;
+        const id = data.payload.id;
+        const d = data.payload.data() as Article;
+
+        this.article = { id, ...d } as Article;
 
         if (this.article) {
           this.formData.patchValue(this.article);
@@ -36,6 +40,9 @@ export class ArticleEditComponent implements OnInit {
           this.ref.push({ name: this.article.Reference[i] });
         }
       });
+      //}
+      //});
+      //});
     }
   }
 
@@ -50,31 +57,32 @@ export class ArticleEditComponent implements OnInit {
   }
 
   update(article) {
-    this.article.Title = article.value.Title;
-    this.article.Subtitle = article.value.Subtitle;
-    this.article.Image = article.value.Image;
-    this.article.Reference = article.value.Reference;
-    this.article.Feature = article.value.Feature;
-    this.article.Id = this.id;
-    this.article.Publish = Date.parse(new Date().toString());
+    var newArticle = new Article();
+
+    newArticle.Title = article.value.Title;
+    newArticle.Subtitle = article.value.Subtitle;
+    newArticle.Image = article.value.Image;
+    newArticle.Reference = article.value.Reference;
+    newArticle.Feature = article.value.Feature;
+    newArticle.Id = this.article.Id;
 
     if (this.formData.valid) {
-      this.articleService.updateArticle(this.article);
+      this.articleService.updateArticle(newArticle, this.article['id']);
     }
   }
 
   submit(article) {
     debugger;
-    this.article.Title = article.value.Title;
-    this.article.Subtitle = article.value.Subtitle;
-    this.article.Image = article.value.Image;
-    this.article.Reference = article.value.Reference;
-    this.article.Feature = article.value.Feature;
-    this.article.Id = this.id;
-    this.article.Publish = Date.parse(new Date().toString());
+    var newArticle = new Article();
+    newArticle.Title = article.value.Title;
+    newArticle.Subtitle = article.value.Subtitle;
+    newArticle.Image = article.value.Image;
+    newArticle.Reference = article.value.Reference;
+    newArticle.Feature = article.value.Feature;
+    newArticle.Id = this.id;
 
     if (this.formData.valid) {
-      this.articleService.createArticle(this.article);
+      this.articleService.createArticle(newArticle);
     }
   }
 

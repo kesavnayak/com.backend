@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ArticleList } from '../../models/article.model';
-import { ArticleService } from '../../services/article.service';
+import { ArticleList } from 'src/app/Article/models/article.model';
+import { ArticleService } from 'src/app/Article/services/article.service';
 
 @Component({
   selector: 'app-article-list',
@@ -17,10 +17,9 @@ export class ArticleListComponent implements OnInit {
   ngOnInit() {
     this.articleService.getArticleList().subscribe((data) => {
       this.articleLists = data.map((e) => {
-        return {
-          id: e.payload.doc.id,
-          ...(e.payload.doc.data() as {}),
-        } as ArticleList;
+        const id = e.payload.doc.id;
+        const data = e.payload.doc.data() as ArticleList;
+        return { id, ...data } as ArticleList;
       });
     });
   }

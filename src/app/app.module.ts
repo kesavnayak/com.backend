@@ -12,14 +12,15 @@ import { QuestionCategoryEditComponent } from './Interview/QuestionCategory/comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InterviewCategoryComponent } from './Interview/InterviewCategory/components/interview-category/interview-category.component';
 import { InterviewCategoryEditComponent } from './Interview/InterviewCategory/components/interview-category-edit/interview-category-edit.component';
-import { ArticleListComponent } from './Article/components/article-list/article-list.component';
-import { ArticleListEditComponent } from './Article/components/article-list-edit/article-list-edit.component';
-import { ArticlesComponent } from './Article/components/articles/articles.component';
-import { ArticlesEditComponent } from './Article/components/articles-edit/articles-edit.component';
-import { ArticleEditComponent } from './Article/components/article-edit/article-edit.component';
-import { DynamicFeatureComponent } from './Article/components/dynamic-feature/dynamic-feature.component';
-import { DynamicReferenceComponent } from './Article/components/dynamic-reference/dynamic-reference.component';
-import { ArticleComponent } from './Article/components/article/article.component';
+import { ArticleComponent } from './Article/components/ArticleComponent/article/article.component';
+import { ArticleEditComponent } from './Article/components/ArticleComponent/article-edit/article-edit.component';
+import { ArticleListComponent } from './Article/components/ArticleListComponent/article-list/article-list.component';
+import { ArticleListEditComponent } from './Article/components/ArticleListComponent/article-list-edit/article-list-edit.component';
+import { ArticlesComponent } from './Article/components/ArticlesComponent/articles/articles.component';
+import { ArticlesEditComponent } from './Article/components/ArticlesComponent/articles-edit/articles-edit.component';
+import { DynamicFeatureComponent } from './Article/widget/dynamic-feature/dynamic-feature.component';
+import { DynamicReferenceComponent } from './Article/widget/dynamic-reference/dynamic-reference.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,10 +32,10 @@ import { ArticleComponent } from './Article/components/article/article.component
     ArticleListEditComponent,
     ArticlesComponent,
     ArticlesEditComponent,
-    ArticleEditComponent,
     DynamicFeatureComponent,
     DynamicReferenceComponent,
     ArticleComponent,
+    ArticleEditComponent,
   ],
   imports: [
     BrowserModule,

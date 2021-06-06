@@ -1,28 +1,32 @@
+import * as firebase from 'firebase';
+import * as moment from 'moment';
 export class Article {
-  id: string;
   Id: string;
   Title: string;
   Subtitle: string;
   Image: string;
-  Publish: any;
+  Publish: any = moment(
+    firebase.default.database.ServerValue.TIMESTAMP
+  ).toDate();
   Reference: object[];
   Feature: string;
 }
 
 export class Articles {
-  id: string;
   Id: string;
   Title: string;
   Subtitle: string;
   More: string = 'article';
   Image: string;
-  Publish: any;
+  Publish: any = moment(
+    firebase.default.database.ServerValue.TIMESTAMP
+  ).toDate();
   Reference: object[];
   Feature: object[];
+  Description: string;
 }
 
 export class ArticleList {
-  id: string;
   ArticleListColor: string;
   ArticleListDesc: string;
   ArticleListLogo: string;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Article } from '../../models/article.model';
-import { ArticleService } from '../../services/article.service';
+import { Article } from 'src/app/Article/models/article.model';
+import { ArticleService } from 'src/app/Article/services/article.service';
 
 @Component({
   selector: 'app-article',
@@ -23,10 +23,9 @@ export class ArticleComponent implements OnInit {
   ngOnInit() {
     this.articleService.getArticle().subscribe((data) => {
       this.article = data.map((e) => {
-        return {
-          id: e.payload.doc.id,
-          ...(e.payload.doc.data() as {}),
-        } as Article;
+        const id = e.payload.doc.id;
+        const data = e.payload.doc.data() as Article;
+        return { id, ...data } as Article;
       });
 
       this.article = this.article.filter((e) => {
@@ -45,6 +44,6 @@ export class ArticleComponent implements OnInit {
   }
 
   delete(id: string) {
-    this.articleService.deleteArticles(id);
+    this.articleService.deleteArticle(id);
   }
 }

@@ -21,9 +21,10 @@ export class ArticleService {
   }
 
   updateArticleList(articleList: ArticleList) {
+    debugger;
     this.firestore
       .collection('ArticleList')
-      .doc(articleList.id)
+      .doc(articleList['id'])
       .update(articleList);
   }
 
@@ -42,11 +43,17 @@ export class ArticleService {
   }
 
   createArticles(articles: Articles) {
-    return this.firestore.collection('Articles').add(articles);
+    return this.firestore
+      .collection('Articles')
+      .doc()
+      .set(Object.assign({}, articles));
   }
 
-  updateArticles(articles: Articles) {
-    this.firestore.collection('Articles').doc(articles.id).update(Articles);
+  updateArticles(articles: Articles, id: string) {
+    return this.firestore
+      .collection('Articles')
+      .doc(id)
+      .set(Object.assign({}, articles));
   }
 
   deleteArticles(id: string) {
@@ -64,11 +71,17 @@ export class ArticleService {
   }
 
   createArticle(article: Article) {
-    return this.firestore.collection('Article').add(article);
+    return this.firestore
+      .collection('Article')
+      .doc()
+      .set(Object.assign({}, article));
   }
 
-  updateArticle(article: Article) {
-    this.firestore.collection('Article').doc(article.id).update(Article);
+  updateArticle(article: Article, id: string) {
+    return this.firestore
+      .collection('Article')
+      .doc(id)
+      .set(Object.assign({}, article));
   }
 
   deleteArticle(id: string) {
